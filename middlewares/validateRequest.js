@@ -1,11 +1,7 @@
 const validateRequest = (req, res, next) => {
-    try{
-        console.log("validating request")
-        next()
-    }
-    catch{
-
-    }
+  try {
+    next();
+  } catch {}
 };
 
 module.exports = validateRequest;
