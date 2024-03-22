@@ -14,10 +14,20 @@ exports.registerUser = async (req, res) => {
   }
 };
 
-exports.loginUser = async () => {
+exports.loginUser = async (req, res) => {
+  const { email, password } = req.body;
+  const query = "SELECT * FROM users WHERE email = $1 AND password_hash = $2";
+  const values = [email, password];
+
   try {
-    console.log("logging user");
+    const queryResult = await pool.query(query, values);
+    console.log(queryResult.rows);
+
+    if (queryResult.rowCount != 0) res.sendStatus(200);
+    else {
+      throw new Error("invalid email or password");
+    }
   } catch (e) {
-    console.error(e);
+    res.status(400).send(e.messsage);
   }
 };
