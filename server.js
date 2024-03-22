@@ -2,6 +2,8 @@ const dotenv = require("dotenv");
 dotenv.config();
 const express = require("express");
 const app = express();
+app.use(express.json());
+
 const usersRoute = require("./routes/users");
 
 app.get("/", (req, res) => {
