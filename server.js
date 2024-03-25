@@ -1,6 +1,10 @@
+const dotenv = require("dotenv");
+dotenv.config();
+
 const express = require("express");
 const app = express();
 app.use(express.json());
+const port = process.env.PORT || 3000;
 
 const usersRoute = require("./routes/users");
 
@@ -14,6 +18,6 @@ app.get("/", (req, res) => {
 
 app.use("/users", usersRoute);
 
-app.listen(3000, () => {
-  console.log(`Example app listening on port 3000`);
+app.listen(port, () => {
+  console.log(`Server listening on PORT: ${port}`);
 });
