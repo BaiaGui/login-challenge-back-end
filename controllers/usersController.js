@@ -4,7 +4,7 @@ const pool = require("../db/index");
 exports.registerUser = async (req, res) => {
   const { username, email, password } = req.body;
   const { passwordHash, salt } = hashPassword(password);
-  console.log(salt + "l:" + salt.length);
+
   const query = "INSERT INTO users (username, email, password_hash, salt) VALUES ($1, $2, $3, $4)";
   const values = [username, email, passwordHash, salt];
 
@@ -12,7 +12,7 @@ exports.registerUser = async (req, res) => {
     await pool.query(query, values);
     res.status(200).send({ message: "user registered successfully" });
   } catch (e) {
-    res.status(400).send({ message: `${e}` });
+    res.status(400).send({ message: `username or email already registered`, details: `${e}` });
   }
 };
 

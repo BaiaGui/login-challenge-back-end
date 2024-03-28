@@ -2,8 +2,8 @@ exports.registerValidation = (req, res, next) => {
   const { username, email, password } = req.body;
 
   try {
-    validateEmail(email);
     validateUsername(username);
+    validateEmail(email);
     validatePassword(password);
     next();
   } catch (e) {
