@@ -4,6 +4,7 @@ A API conta com 2 endpoints principais:
 - users/register (POST) : Cadastrar Usuário
 - users/login (POST) : Logar Usuário
 
-(URL Base: https://login-challenge-back-end.onrender.com)
-<br>A validação dos dados é feita por parte do servidor e são armazenados em um banco PostgreSQL
+(URL Base: https://login-challenge-back-end.onrender.com)<br>
+- A validação dos dados é feita por parte do servidor e são armazenados em um banco PostgreSQL
+- Utilização de salt na criptografia e armazenamento de senhas
 
